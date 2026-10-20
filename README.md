@@ -31,3 +31,4 @@ Puoi modificare i file direttamente su GitHub: apri un file, clicca la matita âœ
 - **Nuova pubblicazione:** in `publications.html` copia tutto il blocco `<details class="pub"> â€¦ </details>` e incollalo sotto. Per una nuova categoria, come "Working Papers", aggiungi prima un `<h2 class="section-title section-title--lg">Working Papers</h2>`.
 - **Cambiare un'immagine:** sostituisci il file in `images/` mantenendo lo stesso nome.
 - **Header e footer** sono ripetuti in ognuna delle tre pagine. Se cambi email o link LinkedIn, aggiornali in tutti e tre i file.
+
