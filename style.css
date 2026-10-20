@@ -1,180 +1,289 @@
 /* =========================================================
    Danilo Rosin — personal website
-   Replica of the former Google Sites layout
+   Rebuilt on the measurements of the former Google Sites page:
+   12-column grid, same spacing, fonts, line heights and banners.
    ========================================================= */
 
+/* Fonts: the exact files Google Sites loads (Merriweather v33, Inter v20), hosted with the site */
+@font-face { font-family: "Merriweather"; font-style: normal; font-weight: 300 900; font-display: swap; src: url("fonts/merriweather.woff2") format("woff2"); }
+@font-face { font-family: "Merriweather"; font-style: italic; font-weight: 300 900; font-display: swap; src: url("fonts/merriweather-italic.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("fonts/inter.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: italic; font-weight: 100 900; font-display: swap; src: url("fonts/inter-italic.woff2") format("woff2"); }
+
 :root {
-  --green: #2b4a1c;       /* headings, sidebar, links */
-  --text: #1c1c1c;        /* body text */
-  --muted: #434343;       /* sidebar name */
-  --white: #f9f9f9;       /* text over banners and footer */
-  --header-bg: rgba(32, 33, 36, 0.75);
-  --footer-bg: #000;
+  --green: #2b4a1c;
+  --text: #1c1c1c;
+  --muted: #434343;
+  --white: #f9f9f9;
+  --header-bg: #434343;
   --serif: "Merriweather", Georgia, serif;
   --sans: "Inter", Arial, sans-serif;
-  --gutter: 56px;
-  --max: 1000px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
 
 body {
-  margin: 0;
   background: #fff;
   color: var(--text);
   font-family: var(--serif);
   font-size: 16px;
   line-height: 24px;
-  -webkit-font-smoothing: antialiased;
 }
 
 a { color: inherit; }
 
-img { display: block; max-width: 100%; }
+img { display: block; }
+
+p, h1, h2 { margin: 0; }
+
+/* Tabs used to align dates in the CV, exactly like the original */
+.tab { white-space: pre; }
+
+/* ---------- Grid (Google Sites: 12 columns, max 1184px, 48px sides) ---------- */
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: min(calc(100% - 96px), 1184px);
+  margin: 0 auto;
+}
+
+.col { padding: 0 1.25%; }               /* 15% of one column */
+.col-12 { width: 100%; }
+.col-8  { width: 66.6667%; }
+.col-4  { width: 33.3333%; }
+.col-3  { width: 25%; }
+.offset-4 { margin-left: 33.3333%; }
+
+.tile { padding: 8px; }
 
 /* ---------- Header ---------- */
 
 .site-header {
   position: fixed;
-  inset: 0 0 auto 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   height: 56px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 28px;
-  background: transparent;
-  transition: background-color .25s ease, box-shadow .25s ease;
+  align-items: flex-start;
+  padding-left: 16px;
+  color: var(--white);
 }
 
-.site-header.scrolled {
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: var(--header-bg);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .25);
+  opacity: 0;
+  transition: opacity .125s;
+  z-index: -1;
+}
+
+.site-header.solid::before { opacity: 1; }
+
+.menu-toggle {
+  display: none;
+  width: 48px;
+  height: 55px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--white);
+  cursor: pointer;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 16px;
+  height: 56px;
   color: var(--white);
   text-decoration: none;
-  font-size: 20px;
-  line-height: 20px;
+  flex: none;
 }
 
 .brand img {
-  width: 33px;
+  width: 33.4px;
   height: 40px;
+  margin: 8px 4px 8px 12px;
   object-fit: cover;
 }
 
+.brand span {
+  margin-left: 11.6px;
+  font-size: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.site-nav { margin-left: auto; }
+
 .site-nav ul {
   display: flex;
-  gap: 4px;
-  margin: 0;
+  gap: 26.5px;
+  margin: 0 12px 0 0;
   padding: 0;
   list-style: none;
 }
 
 .site-nav a {
   display: block;
-  padding: 8px 10px;
+  padding-top: 16px;
   color: var(--white);
   text-decoration: none;
   font-size: 16px;
   line-height: 24px;
 }
 
-.site-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.site-nav a:hover { text-decoration: underline; }
 
 .site-nav a[aria-current="page"] { font-weight: 700; }
 
-.menu-toggle {
-  display: none;
-  background: none;
+.icon-btn {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  margin-top: 4px;
+  padding: 12px;
   border: 0;
-  padding: 8px;
+  border-radius: 50%;
+  background: none;
   color: var(--white);
   cursor: pointer;
 }
 
-.menu-toggle svg { width: 24px; height: 24px; display: block; }
+.icon-btn:hover { background: rgba(255, 255, 255, .12); }
+
+.icon-btn svg, .menu-toggle svg { display: block; width: 24px; height: 24px; margin: auto; fill: currentColor; }
+
+/* ---------- Search ---------- */
+
+.search-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: 56px;
+  display: none;
+  align-items: center;
+  gap: 4px;
+  padding: 0 4px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+}
+
+.search-open .search-bar { display: flex; }
+
+.search-bar .icon-btn { margin: 0; color: #5f6368; }
+.search-bar .icon-btn:hover { background: rgba(60, 64, 67, .08); }
+
+.search-bar input {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  border: 0;
+  outline: 0;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 18px;
+  color: #202124;
+  background: transparent;
+}
+
+.search-results {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 199;
+  display: none;
+  overflow-y: auto;
+  background: #fff;
+  padding: 24px max(24px, calc((100% - 1184px) / 2)) 48px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.search-open .search-results.has-query { display: block; }
+
+.search-results .count { color: #5f6368; font-size: 14px; margin: 0 0 16px; }
+
+.search-results a.result {
+  display: block;
+  padding: 12px 0;
+  text-decoration: none;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.search-results .result-title { color: var(--green); font-family: var(--serif); font-size: 18px; line-height: 26px; }
+.search-results .result-snippet { color: #3c4043; font-size: 14px; line-height: 20px; margin-top: 4px; }
+.search-results mark { background: #fde293; color: inherit; }
 
 /* ---------- Banner ---------- */
 
 .banner {
-  position: relative;
   height: 340px;
+  padding: 56px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 56px var(--gutter) 0;
   background-size: cover;
-  background-position: center;
-}
-
-.banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, .12);
+  background-position: 50% 50%;
 }
 
 .banner h1 {
-  position: relative;
-  margin: 0;
   color: var(--white);
-  font-size: 45.33px;
+  font-size: 45.3333px;
   line-height: 62.56px;
   font-weight: 700;
   text-align: center;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, .25);
 }
 
-.banner--home { background-image: url("images/banner-home.jpg"); background-position: center 60%; }
+.banner--home h1 { line-height: 54.4px; }
+
+.banner--home { background-image: url("images/banner-home.jpg"); }
 .banner--cv { background-image: url("images/banner-cv.jpg"); }
 .banner--publications { background-image: url("images/banner-publications.png"); }
 
-/* ---------- Main content ---------- */
+/* ---------- Content rows ---------- */
 
-main {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 24px var(--gutter) 48px;
+.row { padding: 24px 0; }
+
+/* Text: paragraphs and headings as Google Sites stacks them */
+.text p + p,
+.text h2 + p,
+.text h1 + p { margin-top: 16px; }
+
+.text h1:not(:first-child) { margin-top: 45.3333px; }
+
+.text.justify p { text-align: justify; }
+
+/* Home: photo and caption */
+.photo { width: 100%; height: auto; }
+
+.caption { padding: 14px 8px; }
+
+.caption h2,
+.text h2 {
+  font-size: 32px;
+  line-height: 28.8px;
+  font-weight: 700;
 }
 
-/* Home: photo column + text column */
-
-.intro {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 25px;
-}
-
-.profile img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 156 / 201;
-  object-fit: cover;
-}
-
-.profile-caption {
-  margin: 24px 8px 0;
+.caption span {
   font-family: var(--sans);
-  font-size: 13.33px;
-  line-height: 28.5px;
+  font-size: 13.3333px;
+  line-height: 12px;
   font-weight: 700;
   color: var(--green);
 }
 
-.profile-caption .name { color: var(--muted); }
+.caption .name { color: var(--muted); }
 
-.profile-caption p { margin: 0; }
-
-.intro h2 {
-  margin: 10px 0 12px;
+.text h2 span {
   font-family: var(--sans);
   font-size: 24px;
   line-height: 21.6px;
@@ -182,179 +291,182 @@ main {
   color: var(--green);
 }
 
-.intro .text p {
-  margin: 0 0 16px;
-  text-align: justify;
-  hyphens: none;
-}
+.text a.plain { color: #000; }
 
-/* Inner pages */
-
-.lead { margin: 8px 0 0; }
-
-.lead a {
-  color: var(--green);
+/* Section headings in CV / Publications (span inside a large H1 line) */
+.text h1 {
+  font-size: 45.3333px;
+  line-height: 62.56px;
   font-weight: 700;
-}
-
-.section-title {
-  margin: 64px 0 24px;
   color: var(--green);
-  font-size: 18.67px;
-  line-height: 25.76px;
-  font-weight: 700;
 }
 
-.section-title--lg {
-  font-size: 21.33px;
-  line-height: 29px;
-}
+.text h1 span { font-size: 18.6667px; line-height: 25.76px; }
+.text h1.lg span { font-size: 21.3333px; line-height: 29.44px; }
 
-/* CV entries: date column + description */
-
-.entries {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.entries li {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-}
-
-.entries .when { white-space: nowrap; }
-
-.entries strong { font-weight: 700; }
+.text .cv-link { color: var(--green); font-weight: 700; }
 
 /* Publications: collapsible item */
+.pub-item { border-bottom: 1px solid #5e5e5e; }
 
-.pub {
-  border-bottom: 1px solid #aaa;
-  margin-top: 40px;
-}
-
-.pub summary {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 12px 8px;
-  cursor: pointer;
+.pub-head {
+  position: relative;
+  padding: 14px 48px 14px 8px;
   font-family: var(--sans);
-  font-size: 13.33px;
-  line-height: 20px;
+  cursor: pointer;
 }
 
-.pub summary::-webkit-details-marker { display: none; }
+.pub-head a { color: var(--green); }
 
-.pub summary .pub-head { flex: 1; }
+.pub-title { font-weight: 700; }
 
-.pub-title {
-  color: var(--green);
-  font-weight: 700;
-  font-size: 16px;
-}
-
-.pub summary a { color: var(--green); }
-
-.pub .chevron {
-  flex: none;
+.pub-toggle {
+  position: absolute;
+  top: 11px;
+  right: 12px;
   width: 24px;
   height: 24px;
-  color: #5f6368;
-  transition: transform .2s ease;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgba(0, 0, 0, .54);
+  cursor: pointer;
 }
 
-.pub[open] .chevron { transform: rotate(180deg); }
+.pub-toggle svg { display: block; width: 24px; height: 24px; fill: currentColor; transition: transform .2s; }
+
+.pub.open .pub-toggle svg { transform: rotate(180deg); }
 
 .pub-body {
-  padding: 0 8px 16px;
-  font-family: var(--sans);
-  font-size: 13.33px;
-  line-height: 20px;
+  display: none;
+  padding: 14px 8px;
 }
 
-.pub-body p { margin: 0 0 8px; }
+.pub.open .pub-body { display: block; }
+
+.pub-body p span { font-family: var(--sans); font-size: 13.3333px; }
 
 .pub-body a { color: var(--green); }
+
+/* Divider above the footer on the CV page */
+.divider-row { height: 19px; }
+.divider { height: 2px; margin-top: 8px; background: rgba(0, 0, 0, .15); }
 
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background: var(--footer-bg);
+  background: #000;
   color: var(--white);
   text-align: center;
-  padding: 40px var(--gutter) 40px;
-  line-height: 22px;
+  padding: 24px 0;
 }
-
-.site-footer .contact-label {
-  margin: 0 0 10px;
-  font-weight: 700;
-}
-
-.site-footer .email { margin: 0; }
 
 .site-footer a { color: var(--white); }
 
+.foot-contact { padding: 14px 8px; line-height: 22.08px; }
+.foot-contact .label { font-weight: 700; }
+.foot-contact .email { margin-top: 10.66px; }
+
+.foot-social { height: 66px; padding-top: 9px; }
+
 .social {
-  display: inline-block;
-  margin: 24px 0 52px;
+  display: block;
   width: 48px;
   height: 48px;
+  margin: 0 auto;
+  padding: 2px;
   border-radius: 50%;
-  background: #5f6368;
-  transition: background-color .2s ease;
 }
 
-.social:hover { background: #80868b; }
+.social span {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #5f6368;
+}
 
-.social svg { width: 48px; height: 48px; display: block; }
+.social:hover span { background: #80868b; }
 
-.copyright { margin: 0; line-height: 24px; }
+.social svg { display: block; width: 44px; height: 44px; }
 
-/* ---------- Responsive ---------- */
+.foot-copy { padding: 44px 8px 13.16px; }
 
-@media (max-width: 760px) {
-  :root { --gutter: 16px; }
+/* ---------- Mobile (Google Sites switches at 767px) ---------- */
 
-  .site-header { padding: 0 8px 0 16px; }
+@media (max-width: 767px) {
+  .grid { width: calc(100% - 10px); }
 
-  .brand { font-size: 18px; }
-
-  .menu-toggle { display: block; }
-
-  .site-nav {
-    position: absolute;
-    top: 56px;
-    left: 0;
-    right: 0;
-    display: none;
-    background: rgba(32, 33, 36, .95);
+  .col, .col-3, .col-4, .col-8, .col-12 {
+    width: 100%;
+    margin-left: 0;
+    padding: 24px 3.75%;
   }
 
-  .site-nav.open { display: block; }
+  .banner .col { padding-top: 0; padding-bottom: 0; }
 
-  .site-nav ul { flex-direction: column; padding: 8px 0; }
+  .row { padding: 0; }
 
-  .site-nav a { padding: 12px 24px; }
+  .home-photo-col { width: 50%; margin: 0 auto; }
 
-  .banner { height: 260px; }
+  .banner h1 { font-size: 40px; line-height: 48px; }
+  .banner--home h1 { line-height: 48px; }
 
-  .banner h1 { font-size: 36px; line-height: 48px; }
+  .site-header { padding-left: 0; }
+  .menu-toggle { display: block; }
+  .brand { margin-left: -12px; }
+  .brand span { font-size: 18.6667px; }
 
-  .intro { grid-template-columns: 1fr; }
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 300;
+    width: 280px;
+    max-width: 85%;
+    margin: 0;
+    padding-top: 8px;
+    background: #fff;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+    transform: translateX(-105%);
+    transition: transform .2s ease;
+  }
 
-  .profile { display: flex; gap: 16px; align-items: flex-end; }
+  .nav-open .site-nav { transform: none; }
 
-  .profile img { width: 130px; flex: none; }
+  .site-nav ul { flex-direction: column; gap: 0; margin: 0; }
 
-  .profile-caption { margin: 0; }
+  .site-nav a {
+    padding: 12px 24px;
+    color: #202124;
+    font-size: 16px;
+  }
 
-  .intro .text p { text-align: left; }
+  .site-nav a[aria-current="page"] { color: var(--green); background: rgba(43, 74, 28, .08); }
 
-  .entries li { grid-template-columns: 96px 1fr; }
+  .nav-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: rgba(0, 0, 0, .4);
+    display: none;
+  }
 
-  .section-title { margin-top: 48px; }
+  .nav-open .nav-scrim { display: block; }
+
+  .icon-btn.search-btn { margin-left: auto; }
+
+  .caption h2, .text h2 { font-size: 26.6667px; line-height: 24px; }
+
+  .site-footer { padding: 0; }
+  .site-footer .col { padding-top: 24px; padding-bottom: 24px; }
+}
+
+@media (max-width: 479px) {
+  .home-photo-col { width: 75%; }
+  .banner { height: 250px; }
+  .banner h1 { font-size: 33.3333px; line-height: 40px; }
+  .banner--home h1 { line-height: 40px; }
+  .brand span { display: none; }
 }

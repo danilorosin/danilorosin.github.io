@@ -6,72 +6,87 @@
   <title>Danilo Rosin - CV</title>
   <meta name="description" content="Curriculum vitae of Danilo Rosin">
   <meta property="og:title" content="Danilo Rosin - CV">
+  <meta property="og:description" content="Curriculum vitae of Danilo Rosin">
   <meta property="og:image" content="images/avatar.jpg">
   <link rel="icon" href="images/avatar.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/merriweather.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- ===== Header (same on every page) ===== -->
   <header class="site-header">
-    <a class="brand" href="index.html">
-      <img src="images/avatar.jpg" alt="">
-      <span>Danilo Rosin</span>
-    </a>
-    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </button>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
+    <a class="brand" href="index.html"><img src="images/avatar.jpg" alt=""><span>Danilo Rosin</span></a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="index.html">About me</a></li>
-        <li><a href="cv.html" aria-current="page">CV</a></li>
-        <li><a href="publications.html">Publications</a></li>
-      </ul>
+      <ul><li><a href="index.html">About me</a></li><li><a href="cv.html" aria-current="page">CV</a></li><li><a href="publications.html">Publications</a></li></ul>
     </nav>
+    <button class="icon-btn search-btn" aria-label="Search this site"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
   </header>
+  <div class="nav-scrim"></div>
+  <div class="search-bar" role="search">
+    <button class="icon-btn search-close" aria-label="Close search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+    <input type="text" placeholder="Search this site" aria-label="Search this site">
+    <button class="icon-btn search-clear" aria-label="Clear search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+  </div>
+  <div class="search-results" aria-live="polite"></div>
 
+  <!-- ===== Banner ===== -->
   <section class="banner banner--cv">
-    <h1><em>Vitae</em></h1>
+    <div class="grid">
+      <div class="col col-12"><div class="tile"><h1><em>Vitae</em></h1></div></div>
+    </div>
   </section>
 
   <main>
-    <p class="lead">My full <em>curriculum vitae</em> can be found here: <a href="https://danilorosin.github.io/CV/">CV</a>.</p>
+    <section class="row">
+      <div class="grid">
+        <div class="col col-12">
+          <div class="tile text">
+            <p>My full <em>curriculum vitae</em> can be found here: <a class="cv-link" href="https://danilorosin.github.io/CV/">CV</a>. </p>
 
-    <h2 class="section-title">Experience</h2>
-    <ul class="entries">
-      <li><span class="when">2026 -</span><span><strong>Bennett School of Public Policy</strong>, Affiliated Researcher</span></li>
-      <li><span class="when">2025 -</span><span><strong>Centro Studi Confindustria</strong>, Ph.D. Intern</span></li>
-    </ul>
+            <h1><span>Experience</span></h1>
+            <!-- One line per entry: date, tab(s), institution in bold, then the role. Lines are separated by <br>. -->
+            <p>2026 -<span class="tab">	</span><span class="tab">	</span><span class="tab">	</span><strong>Bennett School of Public Policy</strong>, Affiliated Researcher<br>
+2025 -<span class="tab">	</span><span class="tab">	</span><span class="tab">	</span><strong>Centro Studi Confindustria</strong>, Ph.D. Intern</p>
 
-    <h2 class="section-title">Education</h2>
-    <ul class="entries">
-      <li><span class="when">2023 -</span><span><strong>Sapienza University of Rome</strong>, Ph.D. Candidate in Economics</span></li>
-      <li><span class="when">2021 - 2023</span><span><strong>Sapienza University of Rome</strong>, MSc in Economics</span></li>
-      <li><span class="when">2017 - 2020</span><span><strong>University of Milan</strong>, BSc in Economics and Management</span></li>
-    </ul>
+            <h1><span>Education</span></h1>
+            <p>2023 - <span class="tab">	</span><span class="tab">	</span><span class="tab">	</span><strong>Sapienza University of Rome</strong>, Ph.D. Candidate in Economics<br>
+2021 - 2023<span class="tab">	</span><strong>Sapienza University of Rome</strong>, MSc in Economics<br>
+2017 - 2020<span class="tab">	</span><strong>University of Milan</strong>, BSc in Economics and Management</p>
 
-    <h2 class="section-title">Visiting</h2>
-    <ul class="entries">
-      <li><span class="when">2026</span><span><strong>Cambridge University</strong>, Bennett School of Public Policy (6 months)</span></li>
-    </ul>
+            <h1><span>Visiting</span></h1>
+            <p>2026<span class="tab">	</span><span class="tab">	</span><span class="tab">	</span><strong>Cambridge University</strong>, Bennett School of Public Policy (6 months)</p>
 
-    <h2 class="section-title">Courses</h2>
-    <ul class="entries">
-      <li><span class="when">2024</span><span><strong>Barcelona School of Economics</strong>, Statistical Machine Learning For Large Unstructured Data</span></li>
-      <li><span class="when">2024</span><span><strong>Università degli Studi Roma Tre</strong>, Natural hazards, human disasters: economics and policy of extreme events</span></li>
-      <li><span class="when">2024</span><span><strong>Sapienza University of Rome</strong>, Advanced Course on Innovation, Growth and International Production</span></li>
-    </ul>
+            <h1><span>Courses</span></h1>
+            <p>2024<span class="tab">	</span><span class="tab">	</span><span class="tab">	</span><strong>Barcelona School of Economics</strong>, Statistical Machine Learning For Large Unstructured Data<br>
+2024<span class="tab">	</span><span class="tab">	</span><span class="tab">	</span><strong>Università degli Studi Roma Tre</strong>, Natural hazards, human disasters: economics and policy of extreme events<br>
+2024<span class="tab">	</span><span class="tab">	</span><span class="tab">	</span><strong>Sapienza University of Rome</strong>, Advanced Course on Innovation, Growth and International Production</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="divider-row">
+      <div class="grid"><div class="col col-12"><div class="divider"></div></div></div>
+    </div>
   </main>
 
+  <!-- ===== Footer (same on every page) ===== -->
   <footer class="site-footer">
-    <p class="contact-label">Contact</p>
-    <p class="email"><a href="mailto:danilo.rosin@uniroma1.it">danilo.rosin@uniroma1.it</a></p>
-    <a class="social" href="https://www.linkedin.com/in/danilo-rosin/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#fff" d="M15.5 19.5h3.7v12h-3.7zm1.85-6a2.15 2.15 0 1 1 0 4.3 2.15 2.15 0 0 1 0-4.3zM21.5 19.5h3.55v1.64h.05c.5-.94 1.71-1.94 3.52-1.94 3.76 0 4.45 2.48 4.45 5.69V31.5h-3.7v-5.83c0-1.39-.03-3.18-1.94-3.18-1.94 0-2.24 1.52-2.24 3.08v5.93H21.5z"/></svg>
-    </a>
-    <p class="copyright">© 2026 – Danilo Rosin</p>
+    <div class="grid">
+      <div class="col col-4 offset-4">
+        <div class="foot-contact">
+          <p class="label">Contact</p>
+          <p class="email"><a href="mailto:danilo.rosin@uniroma1.it">danilo.rosin@uniroma1.it</a></p>
+        </div>
+        <div class="foot-social">
+          <a class="social" href="https://www.linkedin.com/in/danilo-rosin/" target="_blank" rel="noopener" aria-label="LinkedIn"><span><svg viewBox="0 0 44 44" aria-hidden="true"><path fill="#fff" d="M13.6 17.6h3.5v11.3h-3.5zm1.75-5.6a2 2 0 1 1 0 4.05 2 2 0 0 1 0-4.05zM19.3 17.6h3.35v1.55h.05c.47-.88 1.61-1.83 3.32-1.83 3.55 0 4.2 2.34 4.2 5.37v6.21h-3.5v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.91v5.59h-3.48z"/></svg></span></a>
+        </div>
+        <div class="foot-copy">
+          <p>© 2026 – Danilo Rosin</p>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>

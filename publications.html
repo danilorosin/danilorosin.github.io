@@ -6,62 +6,87 @@
   <title>Danilo Rosin - Publications</title>
   <meta name="description" content="Research and publications by Danilo Rosin">
   <meta property="og:title" content="Danilo Rosin - Publications">
+  <meta property="og:description" content="Research and publications by Danilo Rosin">
   <meta property="og:image" content="images/avatar.jpg">
   <link rel="icon" href="images/avatar.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/merriweather.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- ===== Header (same on every page) ===== -->
   <header class="site-header">
-    <a class="brand" href="index.html">
-      <img src="images/avatar.jpg" alt="">
-      <span>Danilo Rosin</span>
-    </a>
-    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </button>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
+    <a class="brand" href="index.html"><img src="images/avatar.jpg" alt=""><span>Danilo Rosin</span></a>
     <nav class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="index.html">About me</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="publications.html" aria-current="page">Publications</a></li>
-      </ul>
+      <ul><li><a href="index.html">About me</a></li><li><a href="cv.html">CV</a></li><li><a href="publications.html" aria-current="page">Publications</a></li></ul>
     </nav>
+    <button class="icon-btn search-btn" aria-label="Search this site"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
   </header>
+  <div class="nav-scrim"></div>
+  <div class="search-bar" role="search">
+    <button class="icon-btn search-close" aria-label="Close search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></button>
+    <input type="text" placeholder="Search this site" aria-label="Search this site">
+    <button class="icon-btn search-clear" aria-label="Clear search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+  </div>
+  <div class="search-results" aria-live="polite"></div>
 
+  <!-- ===== Banner ===== -->
   <section class="banner banner--publications">
-    <h1>Research</h1>
+    <div class="grid">
+      <div class="col col-12"><div class="tile"><h1>Research</h1></div></div>
+    </div>
   </section>
 
   <main>
-    <p class="lead">Here you can find updates on my research activity.</p>
-
-    <h2 class="section-title section-title--lg">Policy Writing</h2>
-
-    <!-- To add a publication, copy the whole <details> block below and edit it. -->
-    <details class="pub">
-      <summary>
-        <span class="pub-head">
-          <a class="pub-title" href="https://public.confindustria.it/repository/2026/10/13131212/pubblicazioni-per-far-crescere-litalia-front-Rapporto-di-previsione-CSC-Ottobre-2026.pdf" target="_blank" rel="noopener">Molte le ombre sulla strategia europea di riduzione delle emissioni (ETS)</a>, (with <a href="https://piergiorgiocarapella.wordpress.com" target="_blank" rel="noopener"><em>Piergiorgio Carapella</em></a>)
-        </span>
-        <svg class="chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-      </summary>
-      <div class="pub-body">
-        <p>An assessment of the EU ETS, examining its effectiveness in reducing industrial emissions and its implications for Italian firms’ competitiveness, production and profitability. Focus n. 3, in <em>Rapporto di Previsione</em>. <a href="https://public.confindustria.it/repository/2026/10/13131212/pubblicazioni-per-far-crescere-litalia-front-Rapporto-di-previsione-CSC-Ottobre-2026.pdf" target="_blank" rel="noopener">Click here for the full report</a>, (p. 120-127).</p>
+    <section class="row">
+      <div class="grid">
+        <div class="col col-12"><div class="tile text"><p>Here you can find updates on my research activity.</p></div></div>
       </div>
-    </details>
+    </section>
+
+    <section class="row">
+      <div class="grid">
+        <div class="col col-12"><div class="tile text"><h1 class="lg"><span>Policy Writing</span></h1></div></div>
+      </div>
+    </section>
+
+    <!-- To add a publication: copy this whole <section class="row"> block and edit the texts and links. -->
+    <section class="row">
+      <div class="grid">
+        <div class="col col-12">
+          <div class="pub">
+            <div class="pub-item">
+              <div class="pub-head">
+                <p><a class="pub-title" href="https://public.confindustria.it/repository/2026/10/13131212/pubblicazioni-per-far-crescere-litalia-front-Rapporto-di-previsione-CSC-Ottobre-2026.pdf" target="_blank" rel="noopener">Molte le ombre sulla strategia europea di riduzione delle emissioni (ETS)</a>, (with <a href="https://piergiorgiocarapella.wordpress.com" target="_blank" rel="noopener"><em>Piergiorgio Carapella</em></a>)</p>
+                <button class="pub-toggle" aria-label="Show details" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></button>
+              </div>
+            </div>
+            <div class="pub-body">
+              <p><span>An assessment of the EU ETS, examining its effectiveness in reducing industrial emissions and its implications for Italian firms’ competitiveness, production and profitability. Focus n. 3, in Rapporto di Previsione. <a href="https://public.confindustria.it/repository/2026/10/13131212/pubblicazioni-per-far-crescere-litalia-front-Rapporto-di-previsione-CSC-Ottobre-2026.pdf" target="_blank" rel="noopener">Click here for the full report</a>, (p. 120-127).</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- ===== Footer (same on every page) ===== -->
   <footer class="site-footer">
-    <p class="contact-label">Contact</p>
-    <p class="email"><a href="mailto:danilo.rosin@uniroma1.it">danilo.rosin@uniroma1.it</a></p>
-    <a class="social" href="https://www.linkedin.com/in/danilo-rosin/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#fff" d="M15.5 19.5h3.7v12h-3.7zm1.85-6a2.15 2.15 0 1 1 0 4.3 2.15 2.15 0 0 1 0-4.3zM21.5 19.5h3.55v1.64h.05c.5-.94 1.71-1.94 3.52-1.94 3.76 0 4.45 2.48 4.45 5.69V31.5h-3.7v-5.83c0-1.39-.03-3.18-1.94-3.18-1.94 0-2.24 1.52-2.24 3.08v5.93H21.5z"/></svg>
-    </a>
-    <p class="copyright">© 2026 – Danilo Rosin</p>
+    <div class="grid">
+      <div class="col col-4 offset-4">
+        <div class="foot-contact">
+          <p class="label">Contact</p>
+          <p class="email"><a href="mailto:danilo.rosin@uniroma1.it">danilo.rosin@uniroma1.it</a></p>
+        </div>
+        <div class="foot-social">
+          <a class="social" href="https://www.linkedin.com/in/danilo-rosin/" target="_blank" rel="noopener" aria-label="LinkedIn"><span><svg viewBox="0 0 44 44" aria-hidden="true"><path fill="#fff" d="M13.6 17.6h3.5v11.3h-3.5zm1.75-5.6a2 2 0 1 1 0 4.05 2 2 0 0 1 0-4.05zM19.3 17.6h3.35v1.55h.05c.47-.88 1.61-1.83 3.32-1.83 3.55 0 4.2 2.34 4.2 5.37v6.21h-3.5v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.91v5.59h-3.48z"/></svg></span></a>
+        </div>
+        <div class="foot-copy">
+          <p>© 2026 – Danilo Rosin</p>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
