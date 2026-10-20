@@ -1,6 +1,6 @@
 # danilorosin.github.io
 
-Sito personale di Danilo Rosin. È un sito statico in HTML e CSS, pubblicato con GitHub Pages.
+Sito personale di Danilo Rosin. 
 
 ## Struttura
 
