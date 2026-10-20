@@ -32,3 +32,4 @@ Puoi modificare i file direttamente su GitHub: apri un file, clicca la matita âœ
 - **La ricerca** (lente in alto a destra) legge da sola il testo delle tre pagine: non serve aggiornarla.
 - **Cambiare un'immagine:** sostituisci il file in `images/` mantenendo lo stesso nome.
 - **Header e footer** sono ripetuti in ognuna delle tre pagine. Se cambi email o link LinkedIn, aggiornali in tutti e tre i file.
+
