@@ -37,6 +37,7 @@ a { color: inherit; }
 img { display: block; }
 
 p, h1, h2 { margin: 0; }
+.caption h1 { font-weight: 700; }
 
 /* Tabs used to align dates in the CV, exactly like the original */
 .tab { white-space: pre; }
@@ -234,7 +235,8 @@ p, h1, h2 { margin: 0; }
   background-position: 50% 50%;
 }
 
-.banner h1 {
+.banner h1,
+.banner .banner-title {
   color: var(--white);
   font-size: 45.3333px;
   line-height: 62.56px;
@@ -242,7 +244,7 @@ p, h1, h2 { margin: 0; }
   text-align: center;
 }
 
-.banner--home h1 { line-height: 54.4px; }
+.banner--home .banner-title { line-height: 54.4px; }
 
 .banner--home { background-image: url("images/banner-home.jpg"); }
 .banner--cv { background-image: url("images/banner-cv.jpg"); }
@@ -266,7 +268,7 @@ p, h1, h2 { margin: 0; }
 
 .caption { padding: 14px 8px; }
 
-.caption h2,
+.caption h1,
 .text h2 {
   font-size: 32px;
   line-height: 28.8px;
@@ -409,8 +411,8 @@ p, h1, h2 { margin: 0; }
 
   .home-photo-col { width: 50%; margin: 0 auto; }
 
-  .banner h1 { font-size: 40px; line-height: 48px; }
-  .banner--home h1 { line-height: 48px; }
+  .banner h1, .banner .banner-title { font-size: 40px; line-height: 48px; }
+  .banner--home .banner-title { line-height: 48px; }
 
   .site-header { padding-left: 0; }
   .menu-toggle { display: block; }
@@ -457,7 +459,7 @@ p, h1, h2 { margin: 0; }
 
   .icon-btn.search-btn { margin-left: auto; }
 
-  .caption h2, .text h2 { font-size: 26.6667px; line-height: 24px; }
+  .caption h1, .text h2 { font-size: 26.6667px; line-height: 24px; }
 
   .site-footer { padding: 0; }
   .site-footer .col { padding-top: 24px; padding-bottom: 24px; }
@@ -466,7 +468,7 @@ p, h1, h2 { margin: 0; }
 @media (max-width: 479px) {
   .home-photo-col { width: 75%; }
   .banner { height: 250px; }
-  .banner h1 { font-size: 33.3333px; line-height: 40px; }
-  .banner--home h1 { line-height: 40px; }
+  .banner h1, .banner .banner-title { font-size: 33.3333px; line-height: 40px; }
+  .banner--home .banner-title { line-height: 40px; }
   .brand span { display: none; }
 }

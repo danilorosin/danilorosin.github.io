@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://danilorosin.github.io/</loc><lastmod>2026-10-20</lastmod></url>
-  <url><loc>https://danilorosin.github.io/cv.html</loc><lastmod>2026-10-20</lastmod></url>
-  <url><loc>https://danilorosin.github.io/publications.html</loc><lastmod>2026-10-20</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://danilorosin.github.io/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <image:image><image:loc>https://danilorosin.github.io/images/profile.jpg</image:loc></image:image>
+  </url>
+  <url><loc>https://danilorosin.github.io/cv.html</loc><lastmod>2026-10-22</lastmod></url>
+  <url><loc>https://danilorosin.github.io/publications.html</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://danilorosin.github.io/CV/</loc><lastmod>2026-10-20</lastmod></url>
 </urlset>

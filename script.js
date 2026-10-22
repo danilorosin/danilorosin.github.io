@@ -39,7 +39,7 @@
 
   /* ---- Site search ---- */
   var PAGES = [
-    { url: "index.html", title: "About me" },
+    { url: "index.html", href: "./", title: "About me" },
     { url: "cv.html", title: "CV" },
     { url: "publications.html", title: "Publications" }
   ];
@@ -58,13 +58,13 @@
         var doc = new DOMParser().parseFromString(html, "text/html");
         var main = doc.querySelector("main");
         var text = (main ? main.textContent : "").replace(/\s+/g, " ").trim();
-        return { url: p.url, title: p.title, text: text };
+        return { url: p.url, href: p.href || p.url, title: p.title, text: text };
       }).catch(function () {
         // Opened from disk (file://): fall back to the current page only
         if (location.pathname.split("/").pop() === p.url || (p.url === "index.html" && /\/$/.test(location.pathname))) {
-          return { url: p.url, title: p.title, text: document.querySelector("main").textContent.replace(/\s+/g, " ").trim() };
+          return { url: p.url, href: p.href || p.url, title: p.title, text: document.querySelector("main").textContent.replace(/\s+/g, " ").trim() };
         }
-        return { url: p.url, title: p.title, text: "" };
+        return { url: p.url, href: p.href || p.url, title: p.title, text: "" };
       });
     })).then(function (list) { index = list; return list; });
   }
@@ -93,7 +93,7 @@
         var end = Math.min(p.text.length, start + 220);
         if (end < p.text.length) { var sp2 = p.text.lastIndexOf(" ", end); if (sp2 > at) end = sp2; }
         var snippet = (start > 0 ? "… " : "") + p.text.slice(start, end) + (end < p.text.length ? " …" : "");
-        html += '<a class="result" href="' + p.url + '"><div class="result-title">' + esc(p.title) +
+        html += '<a class="result" href="' + p.href + '"><div class="result-title">' + esc(p.title) +
           '</div><div class="result-snippet">' + esc(snippet).replace(re, "<mark>$1</mark>") + "</div></a>";
       });
       results.innerHTML = html;
